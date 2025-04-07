@@ -187,7 +187,3 @@ This project implements a basic caching strategy with:
 2. **Invalidation**: Implement appropriate cache invalidation strategies
 3. **Monitoring**: Monitor cache usage and adjust as needed
 4. **Fallback**: Always have a fallback plan in case the cache fails
-
-## 🤝 Contribution
-
-Contributions are welcome! Feel free to open issues or submit pull requests. # api-caching

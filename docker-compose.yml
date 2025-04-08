@@ -8,5 +8,18 @@ services:
       - redis_data:/data
     command: redis-server --appendonly yes
 
+  otel-collector:
+    image: otel/opentelemetry-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+      - "8888:8888"   # Prometheus metrics
+      - "8889:8889"   # Prometheus exporter
+      - "13133:13133" # health_check extension
+      - "55679:55679" # zpages extension
+
 volumes:
   redis_data: 

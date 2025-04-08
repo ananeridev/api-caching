@@ -1,5 +1,6 @@
-# API Caching with Node.js and Redis
+# API Caching with Node.js and Redis example from my newsletter
 
+All this content was explanined on my newsletter TechInsightsWeekly.
 This project demonstrates the implementation of caching in a Node.js API using Redis, showcasing the performance benefits that caching can bring to your application.
 
 ## 🚀 Requirements
@@ -21,10 +22,10 @@ cd api-caching-nodejs
 npm install
 ```
 
-3. Configure Redis with Docker:
+3. Configure Redis and OpenTelemetry with Docker:
 ```bash
-# Start Redis container
-docker-compose up -d redis
+# Start all containers
+docker-compose up -d
 ```
 
 4. Configure environment variables:
@@ -33,9 +34,9 @@ docker-compose up -d redis
 
 ## 🏃‍♂️ How to Run
 
-1. Start the Redis container (if not already running):
+1. Start all containers (if not already running):
 ```bash
-docker-compose up -d redis
+docker-compose up -d
 ```
 
 2. Start the server:
@@ -45,9 +46,30 @@ npm run start
 
 3. The API will be available at `http://localhost:3000`
 
+## 📊 Observability
+
+The application is instrumented with OpenTelemetry, providing:
+
+### Traces
+- Request tracing for all endpoints
+- Cache hit/miss events
+- Error tracking
+- Performance metrics
+
+### Metrics
+- Cache hit ratio
+- Request latency
+- Error rates
+- Redis connection status
+
+### How to View Metrics
+1. Prometheus metrics are available at `http://localhost:8889/metrics`
+2. Traces are logged to the OpenTelemetry collector
+3. View detailed logs in the collector container
+
 ## 🛑 Stopping the Services
 
-To stop the Redis container:
+To stop all containers:
 ```bash
 docker-compose down
 ```

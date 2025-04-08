@@ -21,9 +21,11 @@ cd api-caching-nodejs
 npm install
 ```
 
-3. Configure Redis:
-- Make sure Redis is installed and running on your machine
-- Redis should be running on port 6379 (default configuration)
+3. Configure Redis with Docker:
+```bash
+# Start Redis container
+docker-compose up -d redis
+```
 
 4. Configure environment variables:
 - The `.env` file is already configured with default settings
@@ -31,12 +33,24 @@ npm install
 
 ## 🏃‍♂️ How to Run
 
-1. Start the server:
+1. Start the Redis container (if not already running):
 ```bash
-node index.js
+docker-compose up -d redis
 ```
 
-2. The API will be available at `http://localhost:3000`
+2. Start the server:
+```bash
+npm run start
+```
+
+3. The API will be available at `http://localhost:3000`
+
+## 🛑 Stopping the Services
+
+To stop the Redis container:
+```bash
+docker-compose down
+```
 
 ## 📚 Endpoints
 

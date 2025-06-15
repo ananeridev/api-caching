@@ -48,7 +48,7 @@ app.get('/api/posts', async (req, res) => {
         const posts = response.data;
 
         await redisClient.set('posts', JSON.stringify(posts), {
-            EX: 3600 // 1 hour in seconds
+            EX: 3600 
         });
 
         span.setStatus({ code: SpanStatusCode.OK });
